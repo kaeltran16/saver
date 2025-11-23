@@ -73,26 +73,6 @@ export function NetworkStatus({
         )}
       </AnimatePresence>
 
-      {/* Syncing indicator */}
-      <AnimatePresence>
-        {syncing && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed top-20 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-            >
-              <Wifi className="h-4 w-4" />
-            </motion.div>
-            <span className="text-sm font-medium">Syncing...</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Last synced indicator (subtle) */}
       {!syncing && lastSynced && isOnline && (
         <div className="fixed bottom-20 left-4 text-xs text-muted-foreground flex items-center gap-1 z-30 sm:bottom-4">

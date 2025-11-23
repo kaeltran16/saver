@@ -70,6 +70,33 @@ export function Navbar({ onSyncEmails, isSyncing }: NavbarProps = {}) {
               </Button>
             </motion.div>
 
+            {/* Sync Status Badge */}
+            {isSyncing && (
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ type: 'spring', bounce: 0.4 }}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20"
+              >
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full bg-blue-500"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [1, 0.6, 1],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+                <span className="text-xs font-medium text-blue-600 dark:text-blue-400">
+                  Syncing
+                </span>
+              </motion.div>
+            )}
+
             {/* User Menu or Login */}
             {loading ? (
               <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
